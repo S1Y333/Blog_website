@@ -64,7 +64,9 @@ app.get('/posts/:postTitle', (req, res) => {
   Post.findOne({ title: requestdPostTitle}).then(function(post) {
    
        res.render("post", {postTitle: post.title , postContent: post.content });
-    });
+    }).catch(function(err) {
+      console.log(err);
+   });
   })
 
   //if the content body is empty and only have a title, it will show error about the element.content.substring because there's no string
